@@ -13,7 +13,7 @@ import yaml
 DATASET_DIR = Path("datasets/processed/merged")
 DATA_YAML = DATASET_DIR / "data.yaml"
 RUNS_DIR = Path("runs/jersey_detection")
-MODEL_NAME = "yolov8n.pt"  # 可選: yolov8n.pt, yolov8s.pt, yolov8m.pt, yolov8l.pt, yolov8x.pt
+MODEL_NAME = "yolov8m.pt"  # 使用 Medium 模型以獲得更好的準確度，可選: yolov8n.pt, yolov8s.pt, yolov8m.pt, yolov8l.pt, yolov8x.pt
 
 
 def validate_dataset():

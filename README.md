@@ -244,10 +244,10 @@ python train_model.py
 
 預設配置（可在 `train_model.py` 中修改）：
 
-- **模型**: YOLOv8n (Nano)
+- **模型**: YOLOv8m (Medium) - 推薦，平衡準確度和速度
 - **Epochs**: 100
-- **圖片大小**: 自動優化（RTX 5060: 832x832 for small models, 640x640 for larger models）
-- **Batch size**: 自動優化（RTX 5060: 64 for YOLOv8n, 48 for YOLOv8s, 32 for YOLOv8m）
+- **圖片大小**: 自動優化（RTX 5060: 640x640 for YOLOv8m）
+- **Batch size**: 自動優化（RTX 5060: 32 for YOLOv8m）
 - **早停耐心值**: 20 epochs
 - **優化器**: AdamW
 - **學習率**: 0.001
@@ -256,11 +256,11 @@ python train_model.py
 
 ### 選擇不同的模型
 
-在 `train_model.py` 中修改 `MODEL_NAME`：
+在 `train_model.py` 中修改 `MODEL_NAME`（目前預設為 `yolov8m.pt`）：
 
 - `yolov8n.pt` - Nano（最快，參數最少，適合快速測試）
 - `yolov8s.pt` - Small（平衡速度和準確度）
-- `yolov8m.pt` - Medium（推薦，較好的準確度）
+- `yolov8m.pt` - Medium（**預設**，推薦，較好的準確度）
 - `yolov8l.pt` - Large（高準確度）
 - `yolov8x.pt` - XLarge（最高準確度，但訓練最慢）
 
@@ -276,12 +276,12 @@ python train_model.py
 訓練結果會保存在 `runs/jersey_detection/jersey_detection/` 目錄下。
 
 **預期時間**（使用自動優化配置）:
-- GPU (RTX 5060): 約 1-2 小時（100 epochs, YOLOv8n）
-- GPU (RTX 3060): 約 2-4 小時（100 epochs）
-- GPU (RTX 4090): 約 1-2 小時（100 epochs）
-- CPU: 可能需要 10+ 小時（不推薦）
+- GPU (RTX 5060): 約 2-3 小時（100 epochs, YOLOv8m）
+- GPU (RTX 3060): 約 3-5 小時（100 epochs, YOLOv8m）
+- GPU (RTX 4090): 約 1.5-2.5 小時（100 epochs, YOLOv8m）
+- CPU: 可能需要 15+ 小時（不推薦）
 
-**注意**: 訓練腳本會自動檢測您的 GPU 並優化參數。對於 RTX 5060，會自動使用較大的 batch size 和圖片尺寸以充分利用 GPU 性能。
+**注意**: 訓練腳本會自動檢測您的 GPU 並優化參數。對於 RTX 5060，使用 YOLOv8m 模型會自動使用 batch size 32 和圖片尺寸 640x640 以充分利用 GPU 性能。
 
 ### 訓練結果
 
