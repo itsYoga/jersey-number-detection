@@ -1,6 +1,16 @@
 # 球衣號碼檢測模型訓練專案
 
+![Python](https://img.shields.io/badge/python-3.8%2B-blue)
+![PyTorch](https://img.shields.io/badge/PyTorch-2.0%2B-orange)
+![YOLOv8](https://img.shields.io/badge/YOLOv8-Ultralytics-red)
+![CUDA](https://img.shields.io/badge/CUDA-11.8%2F12.1-green)
+![License](https://img.shields.io/badge/license-MIT-blue)
+
 這個專案用於訓練一個專門檢測排球運動員球衣號碼的 YOLOv8 模型。資料集來自 Roboflow Universe 的多個公開資料集。
+
+## 🏷️ Topics
+
+`yolov8` `jersey-detection` `computer-vision` `deep-learning` `pytorch` `object-detection` `volleyball` `roboflow` `yolo` `machine-learning`
 
 ## 📋 目錄
 
