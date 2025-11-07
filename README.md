@@ -273,7 +273,7 @@ python train_model.py
 - 驗證指標（mAP, precision, recall）
 - 訓練曲線圖
 
-訓練結果會保存在 `runs/jersey_detection/jersey_detection/` 目錄下。
+訓練結果會保存在 `runs/jersey_detection/` 目錄下。
 
 **預期時間**（使用自動優化配置）:
 - GPU (RTX 5060): 約 2-3 小時（100 epochs, YOLOv8m）
@@ -287,11 +287,11 @@ python train_model.py
 
 訓練完成後，您會找到：
 
-- **最佳模型**: `runs/jersey_detection/jersey_detection/weights/best.pt`
-- **最新模型**: `runs/jersey_detection/jersey_detection/weights/last.pt`
-- **訓練曲線**: `runs/jersey_detection/jersey_detection/results.png`
-- **驗證結果**: `runs/jersey_detection/jersey_detection/val_batch0_labels.jpg`
-- **混淆矩陣**: `runs/jersey_detection/jersey_detection/confusion_matrix.png`
+- **最佳模型**: `runs/jersey_detection/weights/best.pt`
+- **最新模型**: `runs/jersey_detection/weights/last.pt`
+- **訓練曲線**: `runs/jersey_detection/results.png`
+- **驗證結果**: `runs/jersey_detection/val_batch0_labels.jpg`
+- **混淆矩陣**: `runs/jersey_detection/confusion_matrix.png`
 
 ## 🔗 整合到專案
 
@@ -311,7 +311,7 @@ python integrate_model.py
 ### 方法 2: 手動複製
 
 ```cmd
-copy runs\jersey_detection\jersey_detection\weights\best.pt ..\volleyball-analysis\models\jersey_detection_yv8.pt
+copy runs\jersey_detection\weights\best.pt ..\volleyball-analysis\models\jersey_detection_yv8.pt
 ```
 
 ### 使用範例
@@ -406,7 +406,7 @@ tensorboard --logdir runs/jersey_detection
 
 ### 查看訓練日誌
 
-訓練日誌保存在 `runs/jersey_detection/jersey_detection/` 目錄下，包括：
+訓練日誌保存在 `runs/jersey_detection/` 目錄下，包括：
 
 - `results.csv` - 每個 epoch 的指標
 - `train_batch*.jpg` - 訓練批次視覺化

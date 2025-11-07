@@ -18,21 +18,24 @@ def find_best_model():
     """尋找最佳模型"""
     runs_dir = CURRENT_DIR / "runs" / "jersey_detection"
     
-    # 尋找最新的訓練結果
+    # 檢查 runs/jersey_detection 目錄是否存在
     if not runs_dir.exists():
         return None
     
-    # 尋找所有訓練結果目錄
-    training_dirs = [d for d in runs_dir.iterdir() if d.is_dir()]
-    if not training_dirs:
-        return None
-    
-    # 使用最新的目錄
-    latest_dir = max(training_dirs, key=lambda x: x.stat().st_mtime)
-    best_model = latest_dir / "weights" / "best.pt"
+    # 直接檢查 weights 目錄
+    weights_dir = runs_dir / "weights"
+    best_model = weights_dir / "best.pt"
     
     if best_model.exists():
         return best_model
+    
+    # 如果沒有找到，嘗試尋找子目錄（兼容舊結構）
+    training_dirs = [d for d in runs_dir.iterdir() if d.is_dir() and d.name != "weights"]
+    if training_dirs:
+        latest_dir = max(training_dirs, key=lambda x: x.stat().st_mtime)
+        best_model = latest_dir / "weights" / "best.pt"
+        if best_model.exists():
+            return best_model
     
     return None
 
