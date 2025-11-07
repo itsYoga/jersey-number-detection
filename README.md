@@ -8,7 +8,7 @@
 
 這個專案用於訓練一個專門檢測排球運動員球衣號碼的 YOLOv8 模型。資料集來自 Roboflow Universe 的多個公開資料集。
 
-## 📊 訓練結果預覽
+## 訓練結果預覽
 
 以下是使用 YOLOv8m 模型訓練後的結果：
 
@@ -24,7 +24,7 @@
 
 `yolov8` `jersey-detection` `computer-vision` `deep-learning` `pytorch` `object-detection` `volleyball` `roboflow` `yolo` `machine-learning`
 
-## 📋 目錄
+## 目錄
 
 - [系統需求](#系統需求)
 - [安裝步驟](#安裝步驟)
@@ -34,7 +34,7 @@
 - [整合到專案](#整合到專案)
 - [疑難排解](#疑難排解)
 
-## 🔧 系統需求
+## 系統需求
 
 ### Windows 系統（推薦用於 GPU 訓練）
 
@@ -55,7 +55,7 @@ nvidia-smi
 
 這會顯示您的 CUDA 版本和 GPU 資訊。
 
-## 📦 安裝步驟
+## 安裝步驟
 
 ### 1. 克隆或下載專案
 
@@ -159,7 +159,7 @@ python -c "import torch; print(f'PyTorch: {torch.__version__}'); print(f'CUDA av
 - 如果使用 venv，請確保已正確安裝 NVIDIA 驅動程式和 CUDA 工具包
 - 如果遇到 CUDA 相關問題，建議使用 Conda 重新安裝
 
-## 📥 資料集下載
+## 資料集下載
 
 ### 步驟 1: 獲取 Roboflow API Key
 
@@ -212,7 +212,7 @@ python download_datasets.py
 - 如果下載失敗，檢查網路連接
 - 如果磁碟空間不足，清理一些空間後重試
 
-## 🔄 資料集組織
+## 資料集組織
 
 下載完成後，需要合併和組織資料集：
 
@@ -244,7 +244,7 @@ datasets/processed/merged/
 └── data.yaml
 ```
 
-## 🚀 模型訓練
+## 模型訓練
 
 ### 基本訓練
 
@@ -359,7 +359,7 @@ detector = JerseyNumberDetector()
 detections = detector.detect(image)
 ```
 
-## 🐛 疑難排解
+## 疑難排解
 
 ### 問題 1: CUDA 不可用
 
@@ -417,7 +417,7 @@ detections = detector.detect(image)
 4. 調整學習率和其他超參數
 5. 使用資料增強（已預設啟用）
 
-## 📊 訓練監控
+## 訓練監控
 
 ### 使用 TensorBoard（可選）
 
@@ -443,7 +443,7 @@ tensorboard --logdir runs/jersey_detection
 - `train_batch*.jpg` - 訓練批次視覺化
 - `val_batch*.jpg` - 驗證批次視覺化
 
-## 📝 注意事項
+## 注意事項
 
 1. **環境選擇**: 推薦使用 Conda 環境，特別是對於 GPU 訓練，因為 Conda 可以更好地管理 CUDA 依賴
 2. **備份**: 訓練前確保有足夠的磁碟空間，建議至少 20GB
@@ -453,7 +453,7 @@ tensorboard --logdir runs/jersey_detection
 6. **資料集品質**: 確保資料集標註正確，這會直接影響模型性能
 7. **RTX 5060 優化**: 訓練腳本已針對 RTX 5060 進行優化，會自動使用最佳參數配置
 
-## 🎯 下一步
+## 下一步
 
 訓練完成後：
 
@@ -462,18 +462,18 @@ tensorboard --logdir runs/jersey_detection
 3. 整合到您的排球分析專案中
 4. 根據實際使用情況調整和優化
 
-## 📚 參考資料
+## 參考資料
 
 - [YOLOv8 文檔](https://docs.ultralytics.com/)
 - [Roboflow Universe](https://universe.roboflow.com/)
 - [PyTorch 安裝指南](https://pytorch.org/get-started/locally/)
 - [排球分析專案](https://github.com/itsYoga/volleyball-analysis)
 
-## 📄 授權
+## 授權
 
 本專案使用 MIT 授權。
 
-## 🤝 貢獻
+## 貢獻
 
 歡迎提交 Issue 或 Pull Request！
 
