@@ -10,7 +10,7 @@ from pathlib import Path
 # 配置
 CURRENT_DIR = Path(__file__).parent
 PROJECT_DIR = CURRENT_DIR.parent / "volleyball-analysis"  # 根據您的專案路徑調整
-MODEL_SOURCE = CURRENT_DIR / "runs" / "jersey_detection" / "jersey_detection" / "weights" / "best.pt"
+MODEL_SOURCE = CURRENT_DIR / "runs" / "jersey_detection" / "weights" / "best.pt"
 MODEL_DEST = PROJECT_DIR / "models" / "jersey_detection_yv8.pt"
 
 
