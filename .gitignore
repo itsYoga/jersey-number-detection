@@ -11,7 +11,7 @@ ENV/
 
 # 資料集和模型
 datasets/
-runs/
+# runs/  # 已移除，允許上傳訓練結果（模型文件 *.pt 仍會被忽略）
 *.pt
 *.pth
 *.onnx
