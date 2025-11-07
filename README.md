@@ -8,6 +8,18 @@
 
 這個專案用於訓練一個專門檢測排球運動員球衣號碼的 YOLOv8 模型。資料集來自 Roboflow Universe 的多個公開資料集。
 
+## 📊 訓練結果預覽
+
+以下是使用 YOLOv8m 模型訓練後的結果：
+
+| 訓練曲線 | 混淆矩陣 |
+|---------|---------|
+| ![Training Results](runs/jersey_detection/results.png) | ![Confusion Matrix](runs/jersey_detection/confusion_matrix.png) |
+
+| 驗證結果 | 訓練批次 |
+|---------|---------|
+| ![Validation Results](runs/jersey_detection/val_batch0_pred.jpg) | ![Training Batch](runs/jersey_detection/train_batch0.jpg) |
+
 ## 🏷️ Topics
 
 `yolov8` `jersey-detection` `computer-vision` `deep-learning` `pytorch` `object-detection` `volleyball` `roboflow` `yolo` `machine-learning`
@@ -292,6 +304,25 @@ python train_model.py
 - **訓練曲線**: `runs/jersey_detection/results.png`
 - **驗證結果**: `runs/jersey_detection/val_batch0_labels.jpg`
 - **混淆矩陣**: `runs/jersey_detection/confusion_matrix.png`
+
+#### 訓練結果視覺化
+
+以下是實際訓練結果的視覺化：
+
+**訓練曲線圖** - 顯示訓練過程中的損失和指標變化：
+![Training Results](runs/jersey_detection/results.png)
+
+**混淆矩陣** - 顯示模型對不同球衣號碼的檢測準確度：
+![Confusion Matrix](runs/jersey_detection/confusion_matrix.png)
+
+**標準化混淆矩陣** - 歸一化後的混淆矩陣：
+![Normalized Confusion Matrix](runs/jersey_detection/confusion_matrix_normalized.png)
+
+**驗證批次結果** - 顯示模型在驗證集上的檢測效果：
+![Validation Batch 0](runs/jersey_detection/val_batch0_pred.jpg)
+
+**訓練批次示例** - 顯示訓練過程中的批次視覺化：
+![Training Batch 0](runs/jersey_detection/train_batch0.jpg)
 
 ## 🔗 整合到專案
 
