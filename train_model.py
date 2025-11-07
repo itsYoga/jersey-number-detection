@@ -103,9 +103,11 @@ def optimize_batch_size(gpu_info, model_name):
     # 根據模型大小和 GPU 記憶體決定 batch size
     # RTX 5060 (8GB) 的推薦配置
     model_batch_configs = {
-        'yolov8n.pt': {'small': 64, 'medium': 48, 'large': 32},  # Nano
+        'yolov8n.pt': {'small': 64, 'medium': 48, 'large': 32},   # Nano
         'yolov8s.pt': {'small': 48, 'medium': 32, 'large': 24},   # Small
-        'yolov8m.pt': {'small': 32, 'medium': 24, 'large': 16},   # Medium
+        # 注意：對於 12GB VRAM，YOLOv8m 的 'small' 配置設為 16 以避免 OOM
+        # 對於 8GB VRAM (RTX 5060)，會使用 'small' 配置，batch size 為 16
+        'yolov8m.pt': {'small': 16, 'medium': 24, 'large': 16},   # Medium (優化以避免 OOM)
         'yolov8l.pt': {'small': 24, 'medium': 16, 'large': 12},  # Large
         'yolov8x.pt': {'small': 16, 'medium': 12, 'large': 8},   # XLarge
     }
@@ -152,9 +154,10 @@ def optimize_workers(gpu_info):
     # 獲取 CPU 核心數
     cpu_count = os.cpu_count() or 4
     
-    # GPU 訓練時可以使用更多 workers，但不要超過 CPU 核心數
-    # RTX 5060 推薦使用 12 個 workers 以充分利用多核心 CPU
-    workers = min(12, cpu_count - 2)  # 保留一些核心給系統
+    # Windows 推薦使用較少的 workers (如 4) 以避免多工錯誤
+    # 原本 min(12, ...) 在 Windows 上太高，會導致 'shared file mapping' 錯誤
+    # 保留一些核心給系統，並確保至少有 1 個 worker
+    workers = min(4, max(1, cpu_count - 2))
     
     print(f"  → 優化 Workers: {workers} (CPU 核心數: {cpu_count})")
     return workers

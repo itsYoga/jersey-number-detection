@@ -247,12 +247,12 @@ python train_model.py
 - **模型**: YOLOv8m (Medium) - 推薦，平衡準確度和速度
 - **Epochs**: 100
 - **圖片大小**: 自動優化（RTX 5060: 640x640 for YOLOv8m）
-- **Batch size**: 自動優化（RTX 5060: 32 for YOLOv8m）
+- **Batch size**: 自動優化（RTX 5060: 16 for YOLOv8m，避免 OOM）
 - **早停耐心值**: 20 epochs
 - **優化器**: AdamW
 - **學習率**: 0.001
 - **混合精度訓練 (AMP)**: 啟用（提高訓練速度）
-- **Workers**: 自動優化（通常為 12）
+- **Workers**: 自動優化（Windows 推薦 4，避免多工錯誤）
 
 ### 選擇不同的模型
 
@@ -281,7 +281,7 @@ python train_model.py
 - GPU (RTX 4090): 約 1.5-2.5 小時（100 epochs, YOLOv8m）
 - CPU: 可能需要 15+ 小時（不推薦）
 
-**注意**: 訓練腳本會自動檢測您的 GPU 並優化參數。對於 RTX 5060，使用 YOLOv8m 模型會自動使用 batch size 32 和圖片尺寸 640x640 以充分利用 GPU 性能。
+**注意**: 訓練腳本會自動檢測您的 GPU 並優化參數。對於 RTX 5060，使用 YOLOv8m 模型會自動使用 batch size 16（優化以避免 OOM）和圖片尺寸 640x640 以充分利用 GPU 性能。Windows 系統會自動使用較少的 workers (4) 以避免多工錯誤。
 
 ### 訓練結果
 
